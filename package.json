@@ -1,0 +1,28 @@
+{
+  "name": "whiz",
+  "version": "0.1.0",
+  "description": "A basic library for creating Neural Networks",
+  "main": "whiz.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:vSanjeev/whiz.git"
+  },
+  "keywords": [
+    "whiz",
+    "neural",
+    "network",
+    "neuron",
+    "neural",
+    "nn",
+    "ann"
+  ],
+  "author": "Sanjeev Venkatesan <v.sanjeev@live.in>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vSanjeev/whiz/issues"
+  },
+  "homepage": "https://github.com/vSanjeev/whiz"
+}
