@@ -1,8 +1,12 @@
 # whiz
 [Artificial Neural Networks](http://en.wikipedia.org/wiki/Artificial_neural_network) are used to predict results based on patterns. One such library is `whiz`.
 
+# Caution
+It is highly recommended that you install (or update) to the latest version `(0.1.3)`, as there is big bug fix in the training method. Thanks!
+
 ## Usage
 This library can only be used as node package.
+
 `npm install whiz`
 
 You could choose to use this package with either [node.js](https://nodejs.org/) or [io.js](https://iojs.org).
@@ -29,7 +33,7 @@ net.train([{input: [0, 0], output: [0]},
 ```
 
 Here, the neural network is trained with XOR inputs.
-Note that the number of input nodes & output nodes given during training should match with numbers given during the [creation of the object](#Creating-an-object).
+Note that the number of input nodes & output nodes given during training should match with numbers given during the [creation of the object](#creating-an-object).
 This method returns the output predicted at the end of training, which can be logged using `console.log();`.
 
 ### Testing the Neural Network
@@ -61,3 +65,7 @@ net.getLearningRate();
 ```
 
 This method return the learningRate, which can also be logged using `console.log();`.
+
+## Changelog
+
+`0.1.3:` Fixed errors with training. Now, the neural network predicts more accurately.

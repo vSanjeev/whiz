@@ -1,6 +1,6 @@
 {
   "name": "whiz",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A basic library for creating Neural Networks",
   "main": "whiz.js",
   "scripts": {
@@ -17,7 +17,10 @@
     "neuron",
     "neural",
     "nn",
-    "ann"
+    "ann",
+    "neural network",
+    "classifier",
+    "machine learning"
   ],
   "author": "Sanjeev Venkatesan <v.sanjeev@live.in>",
   "license": "MIT",

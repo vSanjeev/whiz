@@ -7,7 +7,7 @@ var NeuralNetwork = function (inputNodes, hiddenNodes, outputNodes, options){
   this.hiddenLayer = [];
   this.outputLayer = [];
   options = options || {};
-  this.learningRate = options.learningRate || 0.3;
+  this.learningRate = options.learningRate || 0.7;
 
   Node = function(type){
     if(type=='input'){
@@ -18,23 +18,32 @@ var NeuralNetwork = function (inputNodes, hiddenNodes, outputNodes, options){
     else if(type=='hidden'){
 		this.input = 0;
 		this.output = 0;
-		this.bias = 0.5;
+		this.bias = 1;
 		this.weight = [];
 		for(j=0; j<inputNodes; j++){
-		  this.weight[j] = 0.5;
+		  this.weight[j] = randIH();
 		}
     }
 
     else if(type=='output'){
 		this.input = 0;
 		this.output = 0;
-      this.bias = 0.5;
+      this.bias = 1;
       this.weight = [];
       for(j=0; j<hiddenNodes; j++){
-        this.weight[j] = 0.5;
+        this.weight[j] = randHO();
       }
-    }	
+    }
   }
+
+  randIH = function(){
+    return (Math.random() - 0.5) / 5;
+  }
+
+  randHO = function(){
+    return (Math.random() - 0.5) / 2;
+  }
+
   this.init();
 }
 
@@ -55,9 +64,9 @@ init: function() {
 },
 
 train : function(data){
-
-    for(var i=0; i<data.length; i++){
-
+  for(l=0; l<20000; l++){
+    for(var m=0; m<data.length; m++){
+      i = Math.floor((Math.random()*data.length));
       if(this.inputNodes!=data[i].input.length || this.outputNodes!=data[i].output.length){
         console.log("Error: mismatch in number of neurons, inputs & outputs")
         return;
@@ -92,9 +101,10 @@ train : function(data){
 
       }
     }
+  }
     return results.output;
   },
-  
+
 deltaChange : function(nodeNumber, expected, obtained){
 	for(j=0; j<this.outputNodes; j++){
       this.outputLayer[j].error = obtained.output[j] * (1 - obtained.output[j]) * (expected[nodeNumber].output[j] - obtained.output[j]);
@@ -129,9 +139,8 @@ deltaChange : function(nodeNumber, expected, obtained){
         this.outputLayer[j].bias += this.learningRate * this.outputLayer[j].error;
       }
   },
-  
+
 test : function(data){
-	
     for(var i=0; i<data.length; i++){
 
       if(this.inputNodes!=data[i].input.length){
@@ -175,6 +184,17 @@ test : function(data){
   getLearningRate : function (){
     return this.learningRate;
   },
+
+  tanh : function(x) {
+    if (x === Infinity) {
+      return 1;
+    } else if (x === -Infinity) {
+      return -1;
+    } else {
+      return (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
+    }
+  },
+
 
 }
 
